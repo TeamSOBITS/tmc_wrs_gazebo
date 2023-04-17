@@ -1,31 +1,16 @@
-# tmc_wrs_gazebo_worlds
+# tmc_wrs_gazebo
 
-This package contains world and model files for WRS(World Robot Summit) Service Robotics Category Partner Robot Challenge (Real Space) Gazebo simulator. It is created based on the public rule book below. \
-https://worldrobotsummit.org/en/wrs2020/challenge/service/partner.html
+## 前提条件
+Tidy UpのGazebo環境になります。
 
-But, There is **no guarantee** that this simulator totally complies with the rule book.
+## 前提条件
+[docker_hsr_ws](https://github.com/TeamSOBITS/docker_hsr_ws)のコンテナであること。 
 
-## About the object models
-
-### Begins with the name "ycb_"
-
-It has been converted from Yale-CMU-Berkeley(YCB) Object and Model set.
-
-B. Calli, A. Singh, A. Walsman, S. Srinivasa, P. Abbeel and A. M. Dollar, "The YCB object and Model set: Towards
-common benchmarks for manipulation research," International Conference on Advanced Robotics (ICAR), 2015, pp. 510-517.
-
-http://ycbbenchmarks.org/
-
-<br />This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International license</a>.
-
-### "person_standing" model
-
-The original source is in here.
-
-https://github.com/osrf/gazebo_models
-
-<br />This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 Unported license</a>.
-
-### "trofast" and begins with the name "wrc_"
-
-<br />This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International license</a>.
+## 動作確認（シミュレータ）
+以下のコマンドをコンテナの端末で実行してください。
+```
+$ roslaunch tmc_wrs_gazebo_launch tidyup_wrs2020.launch
+```
+> ** Warning ** \
+> 実環境とGazeboで初期位置の座標が異なります。\
+> 実機で開発を行う場合はmapとlocation_poseを別に作成してください。

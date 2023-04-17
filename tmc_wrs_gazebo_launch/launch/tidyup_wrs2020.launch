@@ -1,0 +1,14 @@
+<launch>
+  <arg name="rviz"                  default="true"/>
+  
+  <!-- gazebo -->
+  <include file="$(find tmc_wrs_gazebo_launch)/launch/wrs_practice0.launch">
+      <arg name="paused"               default="false"/>
+      <arg name="gui"                  default="true"/>
+      <arg name="map"                  default="$(find tmc_wrs_gazebo_worlds)/maps/wrs2020/map.yaml"/>
+  </include>
+
+  <!-- rviz-->
+  <arg name="rviz_cfg"              default="$(find hsrb_common_launch)/config/hsrb_display_full_hsrb.rviz"/>
+  <node if="$(arg rviz)" pkg="rviz" type="rviz" name="rviz" args="-d $(arg rviz_cfg)"/>
+</launch>

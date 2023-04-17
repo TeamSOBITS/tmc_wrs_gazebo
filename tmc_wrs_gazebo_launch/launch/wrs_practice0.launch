@@ -40,6 +40,15 @@ POSSIBILITY OF SUCH DAMAGE.
   <arg name="use_camera_control" default="false" />
   <arg name="seed" default="1" />
 
+  <!-- from hsrb_gazebo_common.xml in hsrb_gazebo_launch -->
+  <arg name="use_manipulation" default="true" />
+  <arg name="use_navigation" default="true" />
+  <arg name="use_perception" default="true" />
+  <arg name="use_task" default="true" />
+  <arg name="use_teleop" default="true" />
+  <arg name="use_web" default="true" />
+  <arg name="personal_name" default="" />
+
   <arg name="map" default="$(find tmc_wrs_gazebo_worlds)/maps/wrs2020/map.yaml" />
 
   <arg unless="$(arg fast_physics)" name="world_suffix" value=""/>
@@ -65,6 +74,29 @@ POSSIBILITY OF SUCH DAMAGE.
     <arg name="robot_name" value="$(arg robot_name)" />
   </include>
 
+  <!-- map -->
+   <include file="$(find hsrb_common_launch)/launch/hsrb_common.launch">
+    <arg name="namespace" value="$(arg namespace)" />
+    <arg name="sim" value="true" />
+    <arg name="use_manipulation" value="$(arg use_manipulation)" />
+    <arg name="use_navigation" value="$(arg use_navigation)" />
+    <arg name="use_perception" value="$(arg use_perception)" />
+    <arg name="use_task" value="$(arg use_task)" />
+    <arg name="use_teleop" value="$(arg use_teleop)" />
+    <arg name="use_web" value="$(arg use_web)" />
+    <arg name="map" value="$(arg map)"/>
+    <arg name="robot_name" value="$(arg robot_name)" />
+    <arg name="personal_name" value="$(arg personal_name)" />
+  </include>
+
+  <!-- <include file="$(find hsrb_gazebo_launch)/launch/include/hsrb_gazebo_common.xml" pass_all_args="true" >
+    <arg name="map" value="$(find tmc_wrs_gazebo_worlds)/maps/wrs2020/map.yaml" />
+    <arg name="world_name" value="$(find tmc_wrs_gazebo_worlds)/worlds/wrs2020$(arg world_suffix)$(arg world_suffix2).world" />
+    <arg name="robot_pos" value="-x -1 -y -7.5 -z 0.32 -Y 1.57"/>
+    <arg name="ground_truth_xyz_offset" value="7.5\ -1.0\ -0.304866" />
+    <arg name="ground_truth_rpy_offset" value="0.0\ 0.0\ -1.57" />
+  </include> -->
+
   <!-- moveit-->
   <include file="$(find hsrb_moveit_config)/launch/hsrb_demo_with_controller.launch">
     <arg name="use_gui" value="false"/>
@@ -72,9 +104,10 @@ POSSIBILITY OF SUCH DAMAGE.
   </include>
 
   <!-- rosnav -->
-  <include file="$(find hsrb_rosnav_config)/launch/hsrb_nav.launch">
+  <!-- <include file="$(find hsrb_rosnav_config)/launch/hsrb_nav.launch">
     <arg name="map_file" value="$(arg map)"/>
-  </include>
+  </include> -->
+  
 
   <!-- pose_to_odom -->
   <node pkg="topic_tools" type="relay" name="odom_relay"

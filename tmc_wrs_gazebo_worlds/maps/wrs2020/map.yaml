@@ -24,7 +24,7 @@
 # CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
 # ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 # POSSIBILITY OF SUCH DAMAGE.
-image: map.pgm
+image: /home/sobits/catkin_ws/src/tmc_wrs_gazebo/tmc_wrs_gazebo_worlds/maps/wrs2020/map.pgm
 resolution: 0.050000
 origin: [-5.000000, -5.000000, 0.000000]
 negate: 0
